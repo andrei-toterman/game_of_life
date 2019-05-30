@@ -25,10 +25,11 @@ class SparseMatrix {
     public:
     SparseMatrix(int _rows, int _cols);
 
-    int  get_rows() const;
-    int  get_cols() const;
-    int           elem(int i, int j) const;
-    void modify(int i, int j, int val);
+    int get_rows();
+    int get_cols();
+    int element(int i, int j);
+    int modify(int i, int j, int val);
+
     int           get_nbh_count(int i, int j);
     void          clear();
     void          randomize();
