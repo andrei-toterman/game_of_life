@@ -25,6 +25,20 @@ void matrix_tests() {
         for (int j = 0; j < m.get_cols(); ++j)
             assert(m.element(i, j) == (i + j) % 2);
 
+    SparseMatrix n = m;
+    for (int i = 0; i < m.get_rows(); ++i)
+        for (int j = 0; j < m.get_cols(); ++j)
+            assert(m.element(i, j) == n.element(i, j));
+
+    assert(m.get_nbh_count(0, 0) == 2);
+    assert(m.get_nbh_count(0, 1) == 2);
+    assert(m.get_nbh_count(0, 2) == 2);
+    assert(m.get_nbh_count(1, 0) == 2);
+    assert(m.get_nbh_count(1, 1) == 4);
+    assert(m.get_nbh_count(1, 2) == 2);
+    assert(m.get_nbh_count(2, 0) == 2);
+    assert(m.get_nbh_count(2, 2) == 2);
+
     try {
         m.element(-1, 0);
         assert(false);
@@ -44,4 +58,9 @@ void matrix_tests() {
         m.modify(-1, 0, 0);
         assert(false);
     } catch (...) { assert(true); }
+
+    m.clear();
+    for (int i = 0; i < m.get_rows(); ++i)
+        for (int j = 0; j < m.get_cols(); ++j)
+            assert(m.element(i, j) == 0);
 }

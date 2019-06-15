@@ -12,7 +12,7 @@ void print_mat(SparseMatrix& m) {
             cout << (m.element(i, j) ? 'O' : ' ') << ' ';
         cout << '|' << endl;
     }
-    for (int i = 0; i < m.get_rows(); ++i)
+    for (int i = 0; i < m.get_cols(); ++i)
         cout << "--";
     cout << endl;
 }
@@ -20,8 +20,10 @@ void print_mat(SparseMatrix& m) {
 int main() {
     matrix_tests();
 
-    SparseMatrix gen{ 25, 25 };
-    SparseMatrix next_gen{ 25, 25 };
+    int          rows = 25;
+    int          cols = 25;
+    SparseMatrix gen{ rows, cols };
+    SparseMatrix next_gen{ rows, cols };
     long long    t   = time(nullptr);
     char         cmd = 'r';
 
